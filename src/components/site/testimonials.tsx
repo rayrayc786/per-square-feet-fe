@@ -67,22 +67,22 @@ export function Testimonials() {
           
           {/* Column 1 */}
           <div className="flex flex-col gap-6 md:mt-32">
-            {[testimonials[0], testimonials[3], testimonials[6]].map((t) => (
-              <TestimonialCard key={t.num} t={t} />
+            {[testimonials[0], testimonials[3], testimonials[6]].filter(Boolean).map((t) => (
+              <TestimonialCard key={t!.num} t={t!} />
             ))}
           </div>
 
           {/* Column 2 */}
           <div className="flex flex-col gap-6 md:mt-16">
-            {[testimonials[1], testimonials[4], testimonials[7]].map((t) => (
-              <TestimonialCard key={t.num} t={t} />
+            {[testimonials[1], testimonials[4], testimonials[7]].filter(Boolean).map((t) => (
+              <TestimonialCard key={t!.num} t={t!} />
             ))}
           </div>
 
           {/* Column 3 */}
           <div className="flex flex-col gap-6">
-            {[testimonials[2], testimonials[5], testimonials[8]].map((t) => (
-              <TestimonialCard key={t.num} t={t} />
+            {[testimonials[2], testimonials[5], testimonials[8]].filter(Boolean).map((t) => (
+              <TestimonialCard key={t!.num} t={t!} />
             ))}
           </div>
 

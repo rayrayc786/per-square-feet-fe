@@ -597,3 +597,20 @@ html.entrance-seen .entrance {
 }
 @media (min-width: 768px) { .entrance-skip { right: 2.5rem; } }
 .entrance-skip:hover { color: var(--gold); }
+
+.custom-price-marker {
+  background: transparent;
+  border: none;
+}
+.property-popup .leaflet-popup-content-wrapper {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.property-popup .leaflet-popup-content {
+  margin: 0;
+  width: 300px !important;
+}
+.property-popup .leaflet-popup-content a:hover {
+  text-decoration: none;
+}

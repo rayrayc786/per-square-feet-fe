@@ -3,6 +3,8 @@ import { useMemo, useState } from "react";
 import { PageHeader, PageShell, Section } from "@/components/site/page";
 import { properties, type Property } from "@/lib/site-data";
 import { useSavedProperties } from "@/hooks/use-saved-properties";
+import { ProductCard } from "@/components/site/ProductCard";
+import { PropertiesMap } from "@/components/site/PropertiesMap";
 
 export const Route = createFileRoute("/properties/")({
   head: () => ({
@@ -33,6 +35,7 @@ function Properties() {
   const [status, setStatus] = useState("Any");
   const [lifestyleFilters, setLifestyleFilters] = useState<string[]>([]);
   const [sortOption, setSortOption] = useState("CURATED");
+  const [hoveredPropertyId, setHoveredPropertyId] = useState<string | null>(null);
   const { toggleSave, isSaved } = useSavedProperties();
 
   const toggleLifestyle = (tag: string) => {
@@ -112,151 +115,71 @@ function Properties() {
         variant="dark"
       />
 
-      <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 pt-12 pb-24 flex flex-col lg:flex-row gap-12 xl:gap-20">
+      <div className="flex flex-col lg:flex-row w-full max-w-[1600px] mx-auto px-4 md:px-8 py-8 gap-8">
         
-        {/* Left Sidebar: Filters */}
-        <aside className="w-full lg:w-64 shrink-0 flex flex-col gap-10">
-          <div>
-            <h3 className="font-display text-2xl mb-2 text-foreground">Filters</h3>
-            <p className="text-sm text-muted-foreground">{list.length} {list.length === 1 ? 'residence' : 'residences'} found</p>
-          </div>
+        {/* Left Area: Filters & Grid */}
+        <div className="w-full lg:w-[55%] xl:w-[60%] flex flex-col">
+          {/* Horizontal Filters (simplified for space) */}
+          <div className="flex items-center gap-3 overflow-x-auto pb-4 mb-6 border-b border-border hide-scrollbar">
+            <select 
+              value={destination}
+              onChange={(e) => setDestination(e.target.value)}
+              className="bg-muted px-4 py-2.5 rounded-full text-sm font-medium outline-none whitespace-nowrap cursor-pointer hover:bg-muted/80 transition-colors"
+            >
+              <option>All destinations</option>
+              <option>Jim Corbett</option>
+              <option>Baghpat, UP</option>
+              <option>Goa</option>
+              <option>Rajasthan</option>
+            </select>
+            
+            <select 
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+              className="bg-muted px-4 py-2.5 rounded-full text-sm font-medium outline-none whitespace-nowrap cursor-pointer hover:bg-muted/80 transition-colors"
+            >
+              <option value="Any">Any Price</option>
+              <option value="Under ₹3 Cr">Under ₹3 Cr</option>
+              <option value="₹3 Cr - ₹5 Cr">₹3 Cr - ₹5 Cr</option>
+              <option value="Above ₹5 Cr">Above ₹5 Cr</option>
+            </select>
 
-          <div className="flex flex-col gap-4">
-            <span className="eyebrow text-muted-foreground">DESTINATION</span>
-            <div className="relative border-b border-border pb-2">
-              <select 
-                value={destination}
-                onChange={(e) => setDestination(e.target.value)}
-                className="w-full appearance-none bg-transparent text-foreground outline-none text-sm cursor-pointer pr-8"
-              >
-                <option>All destinations</option>
-                <option>Jim Corbett</option>
-                <option>Mukteshwar</option>
-                <option>Rishikesh</option>
-                <option>Sohna</option>
-                <option>Kasauli</option>
-                <option>Dhanaulti</option>
-                <option>Nainital</option>
-                <option>Alwar</option>
-              </select>
-              <span className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground text-xs">
-                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="m1 1 4 4 4-4"/></svg>
-              </span>
+            <select 
+              value={propertyType}
+              onChange={(e) => setPropertyType(e.target.value)}
+              className="bg-muted px-4 py-2.5 rounded-full text-sm font-medium outline-none whitespace-nowrap cursor-pointer hover:bg-muted/80 transition-colors"
+            >
+              <option value="Any">Any Type</option>
+              <option value="Villa">Villa</option>
+              <option value="Farmhouse">Farmhouse</option>
+              <option value="Plot">Plot</option>
+            </select>
+            
+            <select 
+              value={bedrooms}
+              onChange={(e) => setBedrooms(e.target.value)}
+              className="bg-muted px-4 py-2.5 rounded-full text-sm font-medium outline-none whitespace-nowrap cursor-pointer hover:bg-muted/80 transition-colors"
+            >
+              <option value="Any">Any Beds</option>
+              <option value="1-2">1-2 Beds</option>
+              <option value="3-4">3-4 Beds</option>
+              <option value="5+">5+ Beds</option>
+            </select>
+            
+            <div className="ml-auto text-sm font-semibold whitespace-nowrap text-foreground shrink-0 pl-4">
+              {list.length} homes
             </div>
           </div>
-
-          <RadioGroup 
-            label="PRICE RANGE" 
-            options={["Any", "Under ₹3 Cr", "₹3 Cr - ₹5 Cr", "Above ₹5 Cr"]} 
-            value={priceRange} 
-            onChange={setPriceRange} 
-          />
-
-          <RadioGroup 
-            label="PROPERTY TYPE" 
-            options={["Any", "Villa", "Apartment", "Heritage", "Penthouse"]} 
-            value={propertyType} 
-            onChange={setPropertyType} 
-          />
-
-          <RadioGroup 
-            label="BEDROOMS" 
-            options={["Any", "1-2", "3-4", "5+"]} 
-            value={bedrooms} 
-            onChange={setBedrooms} 
-          />
           
-          <RadioGroup 
-            label="STATUS" 
-            options={["Any", "Ready to move", "Under construction"]} 
-            value={status} 
-            onChange={setStatus} 
-          />
-
-          <div className="flex flex-col gap-4">
-            <span className="eyebrow text-muted-foreground">LIFESTYLE</span>
-            <div className="flex flex-wrap gap-2">
-              {["PRIVACY", "WELLNESS", "FAMILY", "NATURE", "VIEWS", "COMMUNITY", "HOSPITALITY", "RENTAL POTENTIAL"].map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => toggleLifestyle(tag)}
-                  className={`border px-3 py-2 text-[0.6rem] uppercase tracking-[0.16em] transition-colors rounded-sm ${
-                    lifestyleFilters.includes(tag) 
-                      ? "border-gold bg-gold/5 text-gold" 
-                      : "border-border text-muted-foreground hover:border-gold hover:text-primary"
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-          </div>
-        </aside>
-
-        {/* Right Content: Sort & Grid */}
-        <div className="flex-1 flex flex-col">
-          
-          {/* Top Sort Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-border mb-8">
-            <span className="eyebrow text-muted-foreground hidden sm:block">Showing {list.length} results</span>
-            <div className="flex items-center gap-4 self-end sm:self-auto">
-              <span className="eyebrow text-muted-foreground shrink-0">SORT BY</span>
-              <div className="relative border-b border-border pb-1">
-                <select 
-                  value={sortOption}
-                  onChange={(e) => setSortOption(e.target.value)}
-                  className="appearance-none bg-transparent text-foreground outline-none text-sm cursor-pointer pr-6 font-medium"
-                >
-                  <option value="CURATED">Curated</option>
-                  <option value="NEW">Newest</option>
-                  <option value="PRICE">Price: Low to High</option>
-                  <option value="MOST VIEWED">Most Viewed</option>
-                  <option value="BEST MATCH">Best Match</option>
-                </select>
-                <span className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-gold text-xs">
-                  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="m1 1 4 4 4-4"/></svg>
-                </span>
-              </div>
-            </div>
-          </div>
-
           {/* Properties Grid */}
-          <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2">
             {list.map((p) => (
-              <Link key={p.id} to="/properties/$id" params={{ id: p.id }} className="property-card">
-                <div className="thumb">
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    loading="lazy"
-                    width={1280}
-                    height={960}
-                  />
-                  <span className="badge-verified">Verified</span>
-                </div>
-                <div className="body">
-                  <div className="row">
-                    <h3>{p.name}</h3>
-                    <span className="loc">{p.location}</span>
-                  </div>
-                  <p className="meta">{p.type} · {p.beds} bedrooms · {p.area}</p>
-                  <div className="price-row">
-                    <span className="text-sm font-medium text-foreground">{p.price}</span>
-                    <span className="rule" />
-                    <span className="tags">{p.highlights.slice(0, 2).join(" · ")}</span>
-                  </div>
-                  <div className="actions">
-                    <span className="view-link text-gold">View residence →</span>
-                    <button
-                      type="button"
-                      className={`save-btn ${isSaved(p.id) ? "is-saved" : ""}`}
-                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleSave(p.id); }}
-                    >
-                      {isSaved(p.id) ? "Saved ♥" : "Save ♡"}
-                    </button>
-                  </div>
-                </div>
-              </Link>
+              <ProductCard 
+                key={p.id} 
+                property={p} 
+                onMouseEnter={() => setHoveredPropertyId(p.id)}
+                onMouseLeave={() => setHoveredPropertyId(null)}
+              />
             ))}
           </div>
           
@@ -270,8 +193,6 @@ function Properties() {
                   setPriceRange("Any");
                   setPropertyType("Any");
                   setBedrooms("Any");
-                  setStatus("Any");
-                  setLifestyleFilters([]);
                 }}
                 className="btn-base btn-outline"
               >
@@ -279,6 +200,11 @@ function Properties() {
               </button>
             </div>
           )}
+        </div>
+        
+        {/* Right Area: Map */}
+        <div className="hidden lg:block lg:w-[45%] xl:w-[40%] h-[calc(100vh-120px)] sticky top-[100px] rounded-2xl overflow-hidden border border-border shadow-md">
+          <PropertiesMap properties={list} hoveredPropertyId={hoveredPropertyId} />
         </div>
       </div>
     </PageShell>

@@ -182,15 +182,14 @@ function Home() {
 
   useEffect(() => {
     const el = scrollContainerRef.current;
-    if (el) {
-      el.addEventListener('scroll', checkScroll);
-      window.addEventListener('resize', checkScroll);
-      checkScroll();
-      return () => {
-        el.removeEventListener('scroll', checkScroll);
-        window.removeEventListener('resize', checkScroll);
-      };
-    }
+    if (!el) return;
+    el.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', checkScroll);
+    checkScroll();
+    return () => {
+      el.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('resize', checkScroll);
+    };
   }, [checkScroll]);
 
   const done = useCallback(() => {
