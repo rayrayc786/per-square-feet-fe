@@ -32,13 +32,8 @@ function PropertyDetail() {
   const saved = isLoaded ? isSaved(property.id) : false;
 
   // Ensure gallery has images
-  const allImages = [property.image, ...(property.gallery || [])];
-  
-  // Grid images (exactly 5 for the layout)
-  const gridImages = [...allImages].slice(0, 5);
-  while (gridImages.length < 5 && gridImages.length > 0) {
-    gridImages.push(gridImages[0]!);
-  }
+  const allImages = [property.image, ...(property.gallery || [])].filter(Boolean);
+  const displayImages = allImages.slice(0, 5);
 
   // Generate a realistic base price number from the string for calculation
   const priceNumMatch = property.price.match(/[\d.]+/);
@@ -75,13 +70,13 @@ function PropertyDetail() {
         {/* Gallery Content */}
         <div className="max-w-[760px] mx-auto px-6 py-12">
           <h2 className="text-3xl font-medium mb-8">Photo tour</h2>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-8">
             {allImages.map((img, idx) => (
-              <div key={idx} className="w-full">
+              <div key={idx} className="w-full bg-muted/20 rounded-xl overflow-hidden flex items-center justify-center">
                 <img 
                   src={img} 
                   alt={`Property view ${idx + 1}`} 
-                  className="w-full object-cover rounded-xl"
+                  className="w-full h-auto object-contain rounded-xl"
                 />
               </div>
             ))}
@@ -114,27 +109,70 @@ function PropertyDetail() {
         </div>
         
         {/* Gallery Grid */}
-        <div className="relative rounded-2xl overflow-hidden mb-12 bg-muted">
-          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-2 h-[50vh] md:h-[60vh] lg:h-[65vh]">
-            <div className="md:col-span-2 md:row-span-2 relative h-full">
-              <img
-                onClick={() => setShowGallery(true)}
-                src={gridImages[0]}
-                alt={`${property.name} Main`}
-                className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer"
-              />
-            </div>
-            {gridImages.slice(1, 5).map((img, i) => (
-              <div key={i} className={`hidden md:block relative h-full overflow-hidden ${i === 1 ? 'rounded-tr-2xl' : ''} ${i === 3 ? 'rounded-br-2xl' : ''}`}>
-                <img
-                  onClick={() => setShowGallery(true)}
-                  src={img}
-                  alt={`${property.name} Gallery ${i + 1}`}
-                  className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer"
-                />
+        <div className="relative rounded-2xl overflow-hidden mb-12 bg-muted h-[50vh] md:h-[60vh] lg:h-[65vh]">
+          {displayImages.length === 1 && (
+             <img src={displayImages[0]} alt="Property" onClick={() => setShowGallery(true)} className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer" />
+          )}
+
+          {displayImages.length === 2 && (
+             <div className="grid grid-cols-2 gap-2 h-full">
+               <div className="relative h-full overflow-hidden">
+                 <img src={displayImages[0]} onClick={() => setShowGallery(true)} className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer" />
+               </div>
+               <div className="relative h-full overflow-hidden rounded-tr-2xl rounded-br-2xl">
+                 <img src={displayImages[1]} onClick={() => setShowGallery(true)} className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer" />
+               </div>
+             </div>
+          )}
+
+          {displayImages.length === 3 && (
+             <div className="grid grid-cols-2 gap-2 h-full">
+               <div className="relative h-full overflow-hidden">
+                 <img src={displayImages[0]} onClick={() => setShowGallery(true)} className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer" />
+               </div>
+               <div className="grid grid-rows-2 gap-2 h-full overflow-hidden">
+                 <div className="relative h-full overflow-hidden rounded-tr-2xl">
+                   <img src={displayImages[1]} onClick={() => setShowGallery(true)} className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer" />
+                 </div>
+                 <div className="relative h-full overflow-hidden rounded-br-2xl">
+                   <img src={displayImages[2]} onClick={() => setShowGallery(true)} className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer" />
+                 </div>
+               </div>
+             </div>
+          )}
+
+          {displayImages.length === 4 && (
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-2 h-full">
+               <div className="md:col-span-2 relative h-full overflow-hidden">
+                 <img src={displayImages[0]} onClick={() => setShowGallery(true)} className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer" />
+               </div>
+               <div className="grid grid-rows-3 gap-2 h-full overflow-hidden">
+                 <div className="relative h-full overflow-hidden rounded-tr-2xl">
+                   <img src={displayImages[1]} onClick={() => setShowGallery(true)} className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer" />
+                 </div>
+                 <div className="relative h-full overflow-hidden">
+                   <img src={displayImages[2]} onClick={() => setShowGallery(true)} className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer" />
+                 </div>
+                 <div className="relative h-full overflow-hidden rounded-br-2xl">
+                   <img src={displayImages[3]} onClick={() => setShowGallery(true)} className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer" />
+                 </div>
+               </div>
+             </div>
+          )}
+
+          {displayImages.length >= 5 && (
+            <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-2 h-full">
+              <div className="md:col-span-2 md:row-span-2 relative h-full">
+                <img onClick={() => setShowGallery(true)} src={displayImages[0]} alt={`${property.name} Main`} className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer" />
               </div>
-            ))}
-          </div>
+              {displayImages.slice(1, 5).map((img, i) => (
+                <div key={i} className={`hidden md:block relative h-full overflow-hidden ${i === 1 ? 'rounded-tr-2xl' : ''} ${i === 3 ? 'rounded-br-2xl' : ''}`}>
+                  <img onClick={() => setShowGallery(true)} src={img} alt={`Gallery ${i + 1}`} className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer" />
+                </div>
+              ))}
+            </div>
+          )}
+
           <button 
             onClick={() => setShowGallery(true)}
             className="absolute bottom-6 right-6 bg-background px-4 py-1.5 rounded-lg shadow-md border border-border flex items-center gap-2 text-sm font-semibold hover:bg-muted transition-colors"
@@ -236,8 +274,8 @@ function PropertyDetail() {
             <div className="py-2 border-b border-border pb-8">
               <h3 className="text-xl font-medium mb-6">Where you'll sleep</h3>
               <div className="w-[300px] border border-border/50 rounded-xl overflow-hidden p-4">
-                <div className="aspect-[4/3] rounded-lg overflow-hidden bg-muted mb-4">
-                  <img src={gridImages[1]} alt="Bedroom" className="w-full h-full object-cover" />
+                <div className="aspect-[4/3] rounded-lg overflow-hidden bg-muted mb-4 flex items-center justify-center">
+                  <img src={displayImages[1] || displayImages[0]} alt="Bedroom" className="w-full h-full object-contain" />
                 </div>
                 <h4 className="font-medium">Bedroom</h4>
                 <p className="text-sm text-muted-foreground">1 king bed</p>
