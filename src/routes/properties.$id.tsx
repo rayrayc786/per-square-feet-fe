@@ -190,46 +190,63 @@ function PropertyDetail() {
             
             {/* Header Details */}
             <div>
-              <h2 className="text-2xl font-medium text-foreground mb-1">{property.type} in {property.location}, India</h2>
-              <p className="text-foreground">{property.beds + 2} guests · {property.beds} bedroom{property.beds > 1 ? 's' : ''} · {property.beds + 1} bed{property.beds + 1 > 1 ? 's' : ''} · {property.beds + 1} bathroom{property.beds + 1 > 1 ? 's' : ''}</p>
+              <h2 className="text-2xl font-medium text-foreground mb-1">{property.type} in {property.location}</h2>
+              <p className="text-foreground">
+                {property.totalUnits ? `${property.totalUnits} Units` : 'Exclusive Project'} · {property.beds ? `${property.beds} Bedrooms` : 'Various Layouts'} · {property.area ? property.area : 'Custom Sizes'} · {property.possessionDate ? `Possession by ${property.possessionDate}` : 'Ready to move'}
+              </p>
             </div>
 
-            {/* Guest Favourite Badge */}
-            <div className="border border-border rounded-xl p-5 flex items-center justify-between shadow-sm">
-              <div className="flex items-center gap-4">
-                <Award size={32} strokeWidth={1.5} />
-                <div>
-                  <h3 className="font-semibold text-lg">Guest favourite</h3>
-                  <p className="text-muted-foreground text-sm leading-snug">One of the most loved homes on<br/>Airbnb, according to guests</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-6 text-center">
-                <div>
-                  <p className="font-semibold text-2xl">4.85</p>
-                  <div className="flex gap-0.5 text-foreground justify-center">
-                    <Star size={10} className="fill-foreground stroke-none" />
-                    <Star size={10} className="fill-foreground stroke-none" />
-                    <Star size={10} className="fill-foreground stroke-none" />
-                    <Star size={10} className="fill-foreground stroke-none" />
-                    <Star size={10} className="fill-foreground stroke-none" />
+            {/* Developer Section (Based on Meet the Host) */}
+            <div className="py-6 border-b border-border">
+              <h3 className="text-xl font-medium mb-6">Meet your developer</h3>
+              <div className="flex flex-col md:flex-row gap-8 items-start">
+                {/* Developer Card */}
+                <div className="bg-background border border-border rounded-2xl p-6 shadow-xl shadow-black/5 flex flex-col items-center min-w-[280px]">
+                  <div className="w-24 h-24 rounded-full overflow-hidden bg-muted mb-4">
+                    <img src="https://ui-avatars.com/api/?name=DLF+Group&background=0D8ABC&color=fff" alt="Developer logo" className="w-full h-full object-cover" />
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-1">{property.developer || 'Premium Developer'}</h3>
+                  <div className="flex items-center gap-1 text-sm font-medium mb-6">
+                    <Award size={14} className="text-[#FF385C]" /> Top Builder
+                  </div>
+                  
+                  <div className="w-full flex justify-between border-t border-border pt-4">
+                    <div className="text-center">
+                      <div className="font-bold text-lg">761</div>
+                      <div className="text-xs text-muted-foreground">Reviews</div>
+                    </div>
+                    <div className="w-px bg-border"></div>
+                    <div className="text-center">
+                      <div className="font-bold text-lg flex items-center justify-center gap-1">4.83 <Star size={12} className="fill-foreground" /></div>
+                      <div className="text-xs text-muted-foreground">Rating</div>
+                    </div>
+                    <div className="w-px bg-border"></div>
+                    <div className="text-center">
+                      <div className="font-bold text-lg">15</div>
+                      <div className="text-xs text-muted-foreground">Years</div>
+                    </div>
                   </div>
                 </div>
-                <div className="w-px h-10 bg-border"></div>
-                <div>
-                  <p className="font-semibold text-2xl">72</p>
-                  <p className="text-xs text-foreground underline underline-offset-2">Reviews</p>
-                </div>
-              </div>
-            </div>
 
-            {/* Host Section */}
-            <div className="flex items-center gap-4 py-2 border-b border-border pb-8">
-              <div className="w-12 h-12 rounded-full overflow-hidden bg-muted">
-                <img src="https://ui-avatars.com/api/?name=Karan+Singh&background=0D8ABC&color=fff" alt="Host avatar" className="w-full h-full object-cover" />
-              </div>
-              <div>
-                <h3 className="font-medium text-foreground">Hosted by Karan</h3>
-                <p className="text-muted-foreground text-sm">3 years hosting</p>
+                {/* Developer Info */}
+                <div className="flex-1 space-y-6">
+                  <div>
+                    <h4 className="font-semibold text-lg">{property.developer || 'Premium Developer'} is a Top Builder</h4>
+                    <p className="text-muted-foreground mt-1">Top Builders are experienced, highly rated developers who are committed to providing great quality projects for buyers.</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Developer details</h4>
+                    <p className="text-muted-foreground mt-1 text-sm">Response rate: 98%<br/>Responds within an hour</p>
+                  </div>
+                  <button className="bg-foreground text-background px-6 py-2.5 rounded-lg font-medium hover:bg-foreground/90 transition-colors">
+                    Message developer
+                  </button>
+                  <div className="pt-4 space-y-3 text-sm text-foreground">
+                    <div className="flex gap-3 items-center"><Award size={18} className="text-muted-foreground" /> <span>RERA Registered projects</span></div>
+                    <div className="flex gap-3 items-center"><Shield size={18} className="text-muted-foreground" /> <span>Clear titles & legal vetting</span></div>
+                    <div className="flex gap-3 items-center"><Star size={18} className="text-muted-foreground" /> <span>Focus on premium lifestyles and sustainable living</span></div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -270,15 +287,18 @@ function PropertyDetail() {
               </button>
             </div>
 
-            {/* Where you'll sleep */}
+            {/* Project Details */}
             <div className="py-2 border-b border-border pb-8">
-              <h3 className="text-xl font-medium mb-6">Where you'll sleep</h3>
-              <div className="w-[300px] border border-border/50 rounded-xl overflow-hidden p-4">
-                <div className="aspect-[4/3] rounded-lg overflow-hidden bg-muted mb-4 flex items-center justify-center">
-                  <img src={displayImages[1] || displayImages[0]} alt="Bedroom" className="w-full h-full object-contain" />
-                </div>
-                <h4 className="font-medium">Bedroom</h4>
-                <p className="text-sm text-muted-foreground">1 king bed</p>
+              <h3 className="text-xl font-medium mb-6">Project highlights</h3>
+              <div className="flex flex-wrap gap-2">
+                {property.highlights && property.highlights.map((highlight, i) => (
+                  <span key={i} className="bg-muted px-4 py-2 rounded-full text-sm text-foreground border border-border/50">
+                    {highlight}
+                  </span>
+                ))}
+                {!property.highlights && (
+                   <span className="bg-muted px-4 py-2 rounded-full text-sm text-foreground border border-border/50">Premium Location</span>
+                )}
               </div>
             </div>
 
@@ -365,30 +385,138 @@ function PropertyDetail() {
           </div>
         </div>
 
-        {/* Things to know */}
+        {/* Image Section After Map */}
         <div className="py-12 border-b border-border">
-          <h3 className="text-2xl font-medium mb-8">Things to know</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <h4 className="font-semibold mb-4">House rules</h4>
-              <p className="text-foreground mb-2">Check-in after 2:00 pm</p>
-              <p className="text-foreground mb-2">Checkout before 11:00 am</p>
-              <p className="text-foreground mb-4">2 guests maximum</p>
-              <button className="font-semibold underline underline-offset-4">Show more</button>
+          <div className="w-full aspect-[21/9] rounded-2xl overflow-hidden bg-muted">
+            <img src={displayImages[0]} alt="Property feature" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+          </div>
+        </div>
+
+        {/* Reviews Section */}
+        <div className="py-12 border-b border-border">
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <div className="flex justify-center items-center gap-4 mb-4">
+              <span className="text-4xl text-muted-foreground shrink-0">🌿</span>
+              <h2 className="text-[64px] font-bold tracking-tight">4.91</h2>
+              <span className="text-4xl text-muted-foreground shrink-0">🌿</span>
             </div>
-            <div>
-              <h4 className="font-semibold mb-4">Safety & property</h4>
-              <p className="text-foreground mb-2">Carbon monoxide alarm not reported</p>
-              <p className="text-foreground mb-2">Smoke alarm not reported</p>
-              <p className="text-foreground mb-4">Exterior security cameras on property</p>
-              <button className="font-semibold underline underline-offset-4">Show more</button>
+            <h3 className="text-xl font-bold mb-2">Buyer favourite</h3>
+            <p className="text-muted-foreground">This property is highly rated based on construction quality, location, and developer reliability.</p>
+          </div>
+
+          <div className="flex overflow-x-auto gap-4 pb-4 mb-12 hide-scrollbar border-b border-border">
+            <div className="flex-1 min-w-[120px] pb-4 border-b-2 border-foreground">
+              <div className="text-sm font-medium mb-2">Quality</div>
+              <div className="font-semibold">4.9</div>
             </div>
-            <div>
-              <h4 className="font-semibold mb-4">Cancellation policy</h4>
-              <p className="text-foreground mb-4">This reservation is non-refundable.<br/>Review the host's full policy for details.</p>
-              <button className="font-semibold underline underline-offset-4">Show more</button>
+            <div className="flex-1 min-w-[120px] pb-4 border-b-2 border-foreground/20 hover:border-foreground transition-colors">
+              <div className="text-sm font-medium mb-2">Location</div>
+              <div className="font-semibold">5.0</div>
+            </div>
+            <div className="flex-1 min-w-[120px] pb-4 border-b-2 border-foreground/20 hover:border-foreground transition-colors">
+              <div className="text-sm font-medium mb-2">Value</div>
+              <div className="font-semibold">4.8</div>
+            </div>
+            <div className="flex-1 min-w-[120px] pb-4 border-b-2 border-foreground/20 hover:border-foreground transition-colors">
+              <div className="text-sm font-medium mb-2">Design</div>
+              <div className="font-semibold">4.9</div>
+            </div>
+            <div className="flex-1 min-w-[120px] pb-4 border-b-2 border-foreground/20 hover:border-foreground transition-colors">
+              <div className="text-sm font-medium mb-2">Amenities</div>
+              <div className="font-semibold">4.8</div>
             </div>
           </div>
+
+          <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-lg font-medium">M</div>
+                <div>
+                  <h4 className="font-medium">Manu</h4>
+                  <p className="text-sm text-muted-foreground">August 2026</p>
+                </div>
+              </div>
+              <div className="flex gap-1 mb-2">
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+              </div>
+              <p className="text-foreground leading-relaxed">
+                Beautiful location and excellent build quality. The developer was very transparent throughout the entire process and delivered ahead of schedule.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-[#113824] text-white flex items-center justify-center text-lg font-medium">R</div>
+                <div>
+                  <h4 className="font-medium">Rachel</h4>
+                  <p className="text-sm text-muted-foreground">July 2026</p>
+                </div>
+              </div>
+              <div className="flex gap-1 mb-2">
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+              </div>
+              <p className="text-foreground leading-relaxed">
+                The amenities are top notch and exactly as described in the brochure. I'm very happy with this investment. Highly recommend this project.
+              </p>
+              <button className="underline font-medium mt-2">Show more</button>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-muted">
+                  <img src="https://ui-avatars.com/api/?name=Raktim&background=random" alt="Avatar" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Raktim</h4>
+                  <p className="text-sm text-muted-foreground">2 weeks ago</p>
+                </div>
+              </div>
+              <div className="flex gap-1 mb-2">
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+              </div>
+              <p className="text-foreground leading-relaxed">
+                Great place, completely hassle-free paperwork.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-muted">
+                  <img src="https://ui-avatars.com/api/?name=Nupur&background=random" alt="Avatar" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Nupur</h4>
+                  <p className="text-sm text-muted-foreground">July 2026</p>
+                </div>
+              </div>
+              <div className="flex gap-1 mb-2">
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+                <Star size={12} className="fill-foreground" />
+              </div>
+              <p className="text-foreground leading-relaxed">
+                I enjoyed my visits to the site during construction. The team was accommodating, and the final finish of the property is fantastic.
+              </p>
+            </div>
+          </div>
+          
+          <button className="mt-10 border border-foreground rounded-lg px-6 py-3 font-semibold hover:bg-muted/30 transition-colors">
+            Show all 12 reviews
+          </button>
         </div>
 
       </div>
