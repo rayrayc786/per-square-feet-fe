@@ -287,7 +287,7 @@ function Home() {
 
   return (
     <>
-      {intro ? <Entrance onDone={done} /> : null}
+      {/* {intro ? <Entrance onDone={done} /> : null} */}
       <PageShell>
         {/* ==================== HERO ==================== */}
         <section className="hero-image">
@@ -577,14 +577,22 @@ function Home() {
         </section>
 
         {/* ==================== CLOSING CTA ==================== */}
-        <section className="bg-secondary py-28 md:py-36">
+        <section className="bg-primary text-primary-foreground py-32 md:py-48">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16">
-            <div className="mx-auto max-w-[48rem] text-center">
-              <p className="eyebrow text-gold">Begin</p>
-              <h2 className="display-lg mt-6">Some places are better experienced than explained.</h2>
-              <div className="mt-12 flex flex-wrap justify-center gap-4">
-                <ArchLink to="/properties" className="btn-base btn-solid">Explore properties</ArchLink>
-                <ArchLink to="/contact" className="btn-base btn-outline">Begin a conversation</ArchLink>
+            <div className="grid gap-12 md:grid-cols-12 items-end">
+              <div className="md:col-span-7 lg:col-span-8">
+                <p className="eyebrow text-gold">Begin</p>
+                <h2 className="display-lg mt-6">Some places are better<br className="hidden md:block" />experienced than explained.</h2>
+              </div>
+              <div className="md:col-span-5 lg:col-span-4 flex flex-col gap-8 md:pb-2">
+                <div className="flex flex-wrap gap-4">
+                  <ArchLink to="/properties" className="btn-base bg-white text-primary border-none hover:bg-gold hover:text-white transition-colors">
+                    Explore properties
+                  </ArchLink>
+                  <ArchLink to="/contact" className="btn-base btn-outline text-primary-foreground border-primary-foreground/30 hover:border-gold hover:text-gold">
+                    Begin a conversation
+                  </ArchLink>
+                </div>
               </div>
             </div>
           </div>

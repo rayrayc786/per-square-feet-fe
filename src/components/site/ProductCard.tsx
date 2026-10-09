@@ -42,8 +42,8 @@ export function ProductCard({ property, onMouseEnter, onMouseLeave }: ProductCar
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, onSelect]);
 
-  // Mock rating
-  const rating = "4.85";
+  // Use rating from data, default to 4.85 if missing
+  const rating = property.rating ? property.rating.toString() : "4.85";
 
   return (
     <Link 

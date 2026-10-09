@@ -33,7 +33,7 @@ export function PageHeader({
     >
       <div className="animate-rise mx-auto max-w-[1400px] px-6">
         <p className={`eyebrow ${isDark ? "text-primary-foreground/90" : "text-gold"}`}>{eyebrow}</p>
-        <h1 className={`mt-5 max-w-3xl font-display text-5xl leading-[1.05] md:text-6xl ${isDark ? "text-primary-foreground" : "text-primary"}`}>
+        <h1 className={`mt-5 max-w-none font-display text-4xl leading-[1.05] md:text-5xl lg:text-[3.4rem] tracking-tight ${isDark ? "text-primary-foreground" : "text-primary"}`}>
           {title}
         </h1>
         {intro && (

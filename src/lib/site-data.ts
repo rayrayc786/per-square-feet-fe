@@ -27,6 +27,7 @@ export type Property = {
   lng?: number;
   parking?: string;
   ownership?: string;
+  rating?: number;
 };
 
 export const properties: Property[] = [
@@ -63,7 +64,8 @@ export const properties: Property[] = [
     "parking": "1",
     "ownership": "Freehold",
     "lat": 29.379630165550925,
-    "lng": 79.42572026290797
+    "lng": 79.42572026290797,
+    "rating": 4.85
   },
   {
     "id": "nova-reserve-1",
@@ -93,7 +95,8 @@ export const properties: Property[] = [
     "parking": "Not decided",
     "ownership": "Freehold",
     "lat": 28.468800382973004,
-    "lng": 77.03315396890932
+    "lng": 77.03315396890932,
+    "rating": 4.6
   },
   {
     "id": "avacasa--2",
@@ -128,7 +131,8 @@ export const properties: Property[] = [
     "parking": "2",
     "ownership": "Freehold",
     "lat": 28.838411556954124,
-    "lng": 77.25078656693128
+    "lng": 77.25078656693128,
+    "rating": 4.75
   },
   {
     "id": "nehlia-santosh-hills--3",
@@ -161,7 +165,8 @@ export const properties: Property[] = [
     "parking": "4",
     "ownership": "Freehold",
     "lat": 28.032323466744344,
-    "lng": 76.40045653344647
+    "lng": 76.40045653344647,
+    "rating": 4.5
   },
   {
     "id": "one-goa-4",
@@ -192,7 +197,8 @@ export const properties: Property[] = [
     "parking": "1",
     "ownership": "Freehold",
     "lat": 15.335698585787648,
-    "lng": 74.11033366962796
+    "lng": 74.11033366962796,
+    "rating": 4.9
   },
   {
     "id": "golf-city-yugen-5",
@@ -223,7 +229,8 @@ export const properties: Property[] = [
     "parking": "2",
     "ownership": "Freehold",
     "lat": 15.31950558359002,
-    "lng": 74.15234392963946
+    "lng": 74.15234392963946,
+    "rating": 4.65
   },
   {
     "id": "buildtown-farmhouse-6",
@@ -255,7 +262,8 @@ export const properties: Property[] = [
     "parking": "No Any Paking from Builder Side",
     "ownership": "Freehold",
     "lat": 28.574185369448855,
-    "lng": 77.4579350653066
+    "lng": 77.4579350653066,
+    "rating": 4.8
   },
   {
     "id": "yashobhoomi-farms-7",
@@ -289,7 +297,8 @@ export const properties: Property[] = [
     "parking": "Self ",
     "ownership": "Freehold",
     "lat": 28.375709860084527,
-    "lng": 77.10970919420956
+    "lng": 77.10970919420956,
+    "rating": 4.55
   },
   {
     "id": "svb-amansara-earthstar--8",
@@ -320,7 +329,8 @@ export const properties: Property[] = [
     "parking": "Villa project ",
     "ownership": "Freehold",
     "lat": 28.616714757247486,
-    "lng": 77.13734058941502
+    "lng": 77.13734058941502,
+    "rating": 4.7
   },
   {
     "id": "corbett-county-9",
@@ -354,7 +364,8 @@ export const properties: Property[] = [
     "parking": "1",
     "ownership": "Freehold",
     "lat": 29.432384157093356,
-    "lng": 79.43358090524904
+    "lng": 79.43358090524904,
+    "rating": 4.95
   },
   {
     "id": "hill-view-farms-10",
@@ -389,7 +400,8 @@ export const properties: Property[] = [
     "parking": "Depend upon the construction ",
     "ownership": "Freehold",
     "lat": 28.515600310699526,
-    "lng": 77.08543070662238
+    "lng": 77.08543070662238,
+    "rating": 4.6
   },
   {
     "id": "the-kasul-11",
@@ -422,7 +434,8 @@ export const properties: Property[] = [
     "parking": "5",
     "ownership": "Freehold",
     "lat": 28.72122881629146,
-    "lng": 77.30906083674954
+    "lng": 77.30906083674954,
+    "rating": 4.85
   },
   {
     "id": "shri-divine-vasundhara--12",
@@ -453,7 +466,8 @@ export const properties: Property[] = [
     "parking": "1",
     "ownership": "Freehold",
     "lat": 28.631470111251247,
-    "lng": 76.96537830619397
+    "lng": 76.96537830619397,
+    "rating": 4.7
   },
   {
     "id": "nirvana-hills-13",
@@ -485,7 +499,8 @@ export const properties: Property[] = [
     "parking": "You have to park inside your land parcel",
     "ownership": "Freehold",
     "lat": 28.513232331449824,
-    "lng": 77.34919307702805
+    "lng": 77.34919307702805,
+    "rating": 4.5
   },
   {
     "id": "soul-prakriti--14",
@@ -518,7 +533,8 @@ export const properties: Property[] = [
     "parking": "1",
     "ownership": "Freehold",
     "lat": 28.85137768675527,
-    "lng": 77.27072726345122
+    "lng": 77.27072726345122,
+    "rating": 4.85
   }
 ];
 

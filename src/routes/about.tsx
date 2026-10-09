@@ -33,10 +33,10 @@ const blocks = [
     t: "Our Network",
     d: "Architects, valuers, structural engineers and title lawyers across nine cities, retained so our clients never have to assemble a team from scratch.",
   },
-  {
-    t: "How We Work",
-    d: "A first conversation, a shortlist, three viewings, one recommendation. We are paid for the advice, not the transaction volume.",
-  },
+  // {
+  //   t: "How We Work",
+  //   d: "A first conversation, a shortlist, three viewings, one recommendation. We are paid for the advice, not the transaction volume.",
+  // },
   {
     t: "Why THE CASSTLE CO",
     d: "Because most searches begin with a filter and end with a compromise. Ours begins with how you want your week to feel.",

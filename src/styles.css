@@ -202,7 +202,7 @@
 .display-xl {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(2.75rem, 8.2vw, 7.5rem);
+  font-size: clamp(2.5rem, 6.5vw, 6rem);
   line-height: 0.92;
   letter-spacing: -0.015em;
   color: #ffffff;
@@ -606,14 +606,31 @@ html.entrance-seen .entrance {
 .property-popup .leaflet-popup-content-wrapper {
   padding: 0;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px -8px rgba(0,0,0,0.2);
 }
 .property-popup .leaflet-popup-content {
   margin: 0;
-  width: 300px !important;
+  width: 320px !important;
 }
 .property-popup .leaflet-popup-content a:hover {
   text-decoration: none;
+}
+
+/* Fix ProductCard spacing when inside the popup */
+.property-popup .group {
+  gap: 0 !important;
+}
+.property-popup .group > div:first-child {
+  border-radius: 0 !important;
+  margin-bottom: 1.25rem;
+}
+.property-popup .group > div:last-child {
+  padding: 0 1.25rem 1.5rem 1.25rem;
+}
+.property-popup .leaflet-popup-content p,
+.property-popup .leaflet-popup-content h3 {
+  margin: 0;
 }
 
 /* ---- Word Slider ---- */

@@ -79,8 +79,8 @@ export function PropertiesMap({ properties, hoveredPropertyId }: PropertiesMapPr
               position={[prop.lat, prop.lng]}
               icon={createPriceMarker(prop.price, prop.id === hoveredPropertyId)}
             >
-              <Popup className="property-popup" maxWidth={320} minWidth={300}>
-                <div className="w-[300px]">
+              <Popup className="property-popup" maxWidth={320} minWidth={320}>
+                <div className="w-[320px]">
                   <ProductCard property={prop} />
                 </div>
               </Popup>
