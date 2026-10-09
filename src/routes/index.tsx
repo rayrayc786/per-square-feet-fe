@@ -146,50 +146,56 @@ function shouldShowEntrance(): boolean {
 function TypewriterWord({ words, start = true }: { words: string[], start?: boolean }) {
   const [wordIndex, setWordIndex] = useState(0);
   const [text, setText] = useState(words[0] || "");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isInitial, setIsInitial] = useState(true);
+  const [phase, setPhase] = useState<"initial" | "typing" | "deleting" | "pause">("initial");
 
   useEffect(() => {
     if (!start) return;
 
-    const currentWord = words[wordIndex];
-    let timer: NodeJS.Timeout;
-
-    if (isInitial) {
-      // First word stays for a bit before starting to delete
-      timer = setTimeout(() => {
-        setIsInitial(false);
-        setIsDeleting(true);
-      }, 2000);
+    if (phase === "initial") {
+      const timer = setTimeout(() => setPhase("deleting"), 2000);
       return () => clearTimeout(timer);
     }
 
-    if (isDeleting) {
-      timer = setTimeout(() => {
-        setText(currentWord.substring(0, text.length - 1));
-        if (text.length <= 1) {
-          setIsDeleting(false);
-          setWordIndex((prev) => (prev + 1) % words.length);
-        }
-      }, 40);
-    } else {
-      if (text === currentWord) {
-        timer = setTimeout(() => setIsDeleting(true), 2000);
-      } else {
-        timer = setTimeout(() => {
-          setText(currentWord.substring(0, text.length + 1));
-        }, 120);
+    const currentWord = words[wordIndex];
+
+    if (phase === "deleting") {
+      if (text === "") {
+        setPhase("pause");
+        setWordIndex((prev) => (prev + 1) % words.length);
+        return;
       }
+      const timer = setTimeout(() => {
+        setText((prev) => prev.slice(0, -1));
+      }, 30); // Fast, consistent deletion
+      return () => clearTimeout(timer);
     }
 
-    return () => clearTimeout(timer);
-  }, [text, isDeleting, wordIndex, words, isInitial]);
+    if (phase === "pause") {
+      const timer = setTimeout(() => setPhase("typing"), 400); // Small pause before typing next word
+      return () => clearTimeout(timer);
+    }
+
+    if (phase === "typing") {
+      if (text === currentWord) {
+        const timer = setTimeout(() => setPhase("deleting"), 2500); // Wait longer on full word
+        return () => clearTimeout(timer);
+      }
+      const nextChar = currentWord.slice(0, text.length + 1);
+      const typingSpeed = Math.random() * 50 + 70; // Human-like randomness
+      const timer = setTimeout(() => {
+        setText(nextChar);
+      }, typingSpeed);
+      return () => clearTimeout(timer);
+    }
+  }, [text, phase, wordIndex, words, start]);
+
+  const isBlinking = !start || phase === "initial" || text === words[wordIndex] || phase === "pause";
 
   return (
     <span className="whitespace-nowrap">
       <span className="text-gold">{text}</span>
       <span 
-        className="animate-pulse inline-block border-r-[3px] border-gold h-[0.8em] align-middle ml-1" 
+        className={`inline-block border-r-[3px] border-gold h-[0.8em] align-middle ml-1 transition-opacity ${isBlinking ? 'animate-pulse' : ''}`}
         style={{ marginBottom: '0.1em' }} 
       />
     </span>
