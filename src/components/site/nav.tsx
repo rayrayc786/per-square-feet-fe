@@ -54,7 +54,7 @@ export function SiteNav() {
         {/* Brand */}
         <ArchLink to="/" exact className="shrink-0">
           <span className={`eyebrow nav-brand block transition-colors tracking-[0.34em] ${isTransparent ? "text-white" : "text-primary"}`}>
-            Per Square Feet
+            THE CASSTLE CO
           </span>
         </ArchLink>
 
@@ -78,7 +78,7 @@ export function SiteNav() {
 
         {/* Secondary nav — matches HTML: Sign in, Saved, Contact */}
         <div className="hidden items-center gap-5 lg:flex">
-          <ArchLink
+          {/* <ArchLink
             to="/signin"
             className={`link-underline text-[0.6875rem] uppercase tracking-[0.28em] transition-colors ${
               isTransparent
@@ -87,7 +87,7 @@ export function SiteNav() {
             }`}
           >
             Sign in
-          </ArchLink>
+          </ArchLink> */}
           <ArchLink
             to="/saved"
             className={`link-underline text-[0.6875rem] uppercase tracking-[0.28em] transition-colors ${

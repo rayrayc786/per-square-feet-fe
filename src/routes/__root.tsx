@@ -79,11 +79,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Per Square Feet — Premium Indian Real Estate" },
+      { title: "THE CASSTLE CO — Premium Indian Real Estate" },
       {
         name: "description",
         content:
-          "Per Square Feet helps you discover, understand and invest in premium Indian homes, land and neighbourhoods.",
+          "THE CASSTLE CO helps you discover, understand and invest in premium Indian homes, land and neighbourhoods.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

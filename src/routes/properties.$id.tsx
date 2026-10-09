@@ -17,7 +17,7 @@ export const Route = createFileRoute("/properties/$id")({
     const { property } = loaderData;
     return {
       meta: [
-        { title: `${property.name} | Per Square Feet` },
+        { title: `${property.name} | THE CASSTLE CO` },
         { name: "description", content: property.blurb },
       ],
     };

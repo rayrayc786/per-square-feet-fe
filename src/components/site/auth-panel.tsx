@@ -33,9 +33,9 @@ export function AuthPanel({
             {cta}
           </button>
         </form>
-        <p className="mt-6 text-xs text-muted-foreground">
+        {/* <p className="mt-6 text-xs text-muted-foreground">
           Demonstration form — no account is created.
-        </p>
+        </p> */}
       </div>
       <img
         src={interior}

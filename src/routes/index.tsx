@@ -6,17 +6,18 @@ import { ArchLink, type AppRoute } from "@/components/site/transition";
 import { properties } from "@/lib/site-data";
 import { useSavedProperties } from "@/hooks/use-saved-properties";
 import { Testimonials } from "@/components/site/testimonials";
+import { ProductCard } from "@/components/site/ProductCard";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Per Square Feet — Find a Place That Feels Like Yours" },
+      { title: "THE CASSTLE CO — Find a Place That Feels Like Yours" },
       {
         name: "description",
         content:
           "Curated second homes and private escapes across India's mountains, forests and countryside — verified projects with advisory-led guidance.",
       },
-      { property: "og:title", content: "Per Square Feet — Find a Place That Feels Like Yours" },
+      { property: "og:title", content: "THE CASSTLE CO — Find a Place That Feels Like Yours" },
       {
         property: "og:description",
         content: "Curated second homes and private escapes, selected for the way you want to live.",
@@ -120,6 +121,17 @@ const ownershipPillars = [
   { label: "Lifestyle partnerships", desc: "Hospitality and wellness access." },
 ];
 
+const PLACES = [
+  "place",
+  "second home",
+  "vacation home",
+  "villa",
+  "farmhouse",
+  "plot",
+  "holiday home",
+  "weekend home",
+];
+
 function shouldShowEntrance(): boolean {
   if (typeof window === "undefined") return true;
   try {
@@ -129,6 +141,59 @@ function shouldShowEntrance(): boolean {
     return false;
   }
   return true;
+}
+
+function TypewriterWord({ words, start = true }: { words: string[], start?: boolean }) {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [text, setText] = useState(words[0] || "");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isInitial, setIsInitial] = useState(true);
+
+  useEffect(() => {
+    if (!start) return;
+
+    const currentWord = words[wordIndex];
+    let timer: NodeJS.Timeout;
+
+    if (isInitial) {
+      // First word stays for a bit before starting to delete
+      timer = setTimeout(() => {
+        setIsInitial(false);
+        setIsDeleting(true);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+
+    if (isDeleting) {
+      timer = setTimeout(() => {
+        setText(currentWord.substring(0, text.length - 1));
+        if (text.length <= 1) {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }
+      }, 40);
+    } else {
+      if (text === currentWord) {
+        timer = setTimeout(() => setIsDeleting(true), 2000);
+      } else {
+        timer = setTimeout(() => {
+          setText(currentWord.substring(0, text.length + 1));
+        }, 120);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, wordIndex, words, isInitial]);
+
+  return (
+    <span className="whitespace-nowrap">
+      <span className="text-gold">{text}</span>
+      <span 
+        className="animate-pulse inline-block border-r-[3px] border-gold h-[0.8em] align-middle ml-1" 
+        style={{ marginBottom: '0.1em' }} 
+      />
+    </span>
+  );
 }
 
 function FadeInStep({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) {
@@ -227,11 +292,11 @@ function Home() {
             height={1088}
           />
           <div className="shell">
-            <p className="eyebrow rise text-light">Curated second homes</p>
-            <h1 className="display-xl rise mt-8 max-w-[56rem]" style={{ animationDelay: "120ms" }}>
-              Find a place<br />that feels like yours.
+            <h1 className="display-xl rise mt-8 w-full px-4" style={{ animationDelay: "120ms" }}>
+              <span className="block">Find a <TypewriterWord words={PLACES} start={!intro} /></span>
+              <span className="block">that feels like yours.</span>
             </h1>
-            <p className="rise mt-8 max-w-[28rem] text-sm leading-relaxed" style={{ animationDelay: "240ms" }}>
+            <p className="rise mt-8 text-sm leading-relaxed" style={{ animationDelay: "240ms" }}>
               Curated second homes and private escapes, selected for the way you want to live.
             </p>
             <div className="rise mt-12 flex flex-wrap items-center justify-center gap-4" style={{ animationDelay: "360ms" }}>
@@ -239,7 +304,7 @@ function Home() {
                 Explore properties
               </ArchLink>
               <a
-                href="https://wa.me/919625225069"
+                href="https://wa.me/919310698305"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="eyebrow link-underline"
@@ -247,9 +312,6 @@ function Home() {
                 Speak to an advisor
               </a>
             </div>
-            <p className="eyebrow rise" style={{ marginTop: "4rem", animationDelay: "420ms" }}>
-              Curated • Verified • Advisory-led
-            </p>
           </div>
         </section>
 
@@ -266,7 +328,7 @@ function Home() {
                   Sometimes, all you need is a few days away from the noise. Somewhere with fresh air, open space and slower mornings. A place to reconnect and enjoy time with the people who matter.
                 </p>
                 <ArchLink to="/about" className="eyebrow link-underline mt-10 inline-block text-foreground">
-                  Discover the Per Square Feet approach
+                  Discover the THE CASSTLE CO approach
                 </ArchLink>
               </div>
             </div>
@@ -353,42 +415,15 @@ function Home() {
             <div className="flex items-end justify-between gap-8">
               <div>
                 <p className="eyebrow text-gold">The collection</p>
-                <h2 className="display-lg mt-6">A few worth<br />knowing.</h2>
+                <h2 className="display-lg mt-6">A few worth knowing.</h2>
               </div>
               <ArchLink to="/properties" className="eyebrow link-underline hidden md:inline-block">
                 Discover the collection
               </ArchLink>
             </div>
-            <div className="mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-16 grid gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
               {properties.slice(0, 3).map((p) => (
-                <ArchLink key={p.id} to={`/properties` as AppRoute} className="property-card">
-                  <div className="thumb">
-                    <img src={p.image} alt={p.name} loading="lazy" width={1280} height={960} />
-                    <span className="badge-verified">Featured</span>
-                  </div>
-                  <div className="body">
-                    <div className="row">
-                      <h3>{p.name}</h3>
-                      <span className="loc">{p.location}</span>
-                    </div>
-                    <p className="meta">{p.type} · {p.beds} bedrooms · {p.area}</p>
-                    <div className="price-row">
-                      <span className="text-sm font-medium text-foreground">{p.price}</span>
-                      <span className="rule" />
-                      <span className="tags">{p.highlights.slice(0, 2).join(" · ")}</span>
-                    </div>
-                    <div className="actions">
-                      <span className="view-link text-gold">View residence →</span>
-                      <button
-                        type="button"
-                        className={`save-btn ${isSaved(p.id) ? "is-saved" : ""}`}
-                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleSave(p.id); }}
-                      >
-                        {isSaved(p.id) ? "Saved ♥" : "Save ♡"}
-                      </button>
-                    </div>
-                  </div>
-                </ArchLink>
+                <ProductCard key={p.id} property={p} />
               ))}
             </div>
           </div>

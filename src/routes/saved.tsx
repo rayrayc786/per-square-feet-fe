@@ -7,7 +7,7 @@ import { Trash2 } from "lucide-react"; // assuming lucide-react is installed
 export const Route = createFileRoute("/saved")({
   head: () => ({
     meta: [
-      { title: "Your Shortlist | Per Square Feet" },
+      { title: "Your Shortlist | THE CASSTLE CO" },
       {
         name: "description",
         content:
@@ -152,7 +152,7 @@ function Saved() {
                   Request a private viewing
                 </Link>
                 <a
-                  href="https://wa.me/919625225069"
+                  href="https://wa.me/919310698305"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex h-10 items-center justify-center rounded-sm border border-input bg-background px-6 text-[0.65rem] uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"

@@ -5,11 +5,11 @@ import { Testimonials } from "@/components/site/testimonials";
 export const Route = createFileRoute("/owner-community")({
   head: () => ({
     meta: [
-      { title: "Owner Community — A Community Beyond the Address | Per Square Feet" },
+      { title: "Owner Community — A Community Beyond the Address | THE CASSTLE CO" },
       {
         name: "description",
         content:
-          "Private experiences, owner gatherings, hospitality and wellness partnerships, and discreet resale within the Per Square Feet owner network.",
+          "Private experiences, owner gatherings, hospitality and wellness partnerships, and discreet resale within the THE CASSTLE CO owner network.",
       },
     ],
   }),
@@ -37,7 +37,7 @@ function OwnerCommunity() {
       <Section className="flex flex-col items-center text-center">
         <div className="max-w-2xl mx-auto flex flex-col items-center animate-rise">
           <p className="text-xl md:text-2xl font-display text-primary leading-snug text-center">
-            Ownership with Per Square Feet continues after possession. Owners are introduced to a private network of services, experiences and other owners across our destinations.
+            Ownership with THE CASSTLE CO continues after possession. Owners are introduced to a private network of services, experiences and other owners across our destinations.
           </p>
           <span className="mt-10 block h-[1px] w-12 bg-gold"></span>
         </div>
@@ -93,7 +93,7 @@ function OwnerCommunity() {
             Become an owner
           </Link>
           <a
-            href="https://wa.me/919625225069"
+            href="https://wa.me/919310698305"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-base btn-outline"

@@ -113,7 +113,7 @@ export function Entrance({ onDone }: { onDone: () => void }) {
         data-entrance-wordmark
         style={{ opacity: phase === 0 ? 1 : 0 }}
       >
-        <p className="eyebrow">Per Square Feet</p>
+        <p className="eyebrow">THE CASSTLE CO</p>
       </div>
 
       <button

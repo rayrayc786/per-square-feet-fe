@@ -16,6 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as InvestmentEstimatorRouteImport } from './routes/investment-estimator'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as OwnerCommunityRouteImport } from './routes/owner-community'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as NeighbourhoodInsightsIndexRouteImport } from './routes/neighbourhood-insights.index'
@@ -58,6 +59,11 @@ const OwnerCommunityRoute = OwnerCommunityRouteImport.update({
   path: '/owner-community',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SavedRoute = SavedRouteImport.update({
   id: '/saved',
   path: '/saved',
@@ -98,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/investment-estimator': typeof InvestmentEstimatorRoute
   '/login': typeof LoginRoute
   '/owner-community': typeof OwnerCommunityRoute
+  '/privacy': typeof PrivacyRoute
   '/saved': typeof SavedRoute
   '/signin': typeof SigninRoute
   '/neighbourhood-insights/$id': typeof NeighbourhoodInsightsIdRoute
@@ -113,6 +120,7 @@ export interface FileRoutesByTo {
   '/investment-estimator': typeof InvestmentEstimatorRoute
   '/login': typeof LoginRoute
   '/owner-community': typeof OwnerCommunityRoute
+  '/privacy': typeof PrivacyRoute
   '/saved': typeof SavedRoute
   '/signin': typeof SigninRoute
   '/neighbourhood-insights/$id': typeof NeighbourhoodInsightsIdRoute
@@ -129,6 +137,7 @@ export interface FileRoutesById {
   '/investment-estimator': typeof InvestmentEstimatorRoute
   '/login': typeof LoginRoute
   '/owner-community': typeof OwnerCommunityRoute
+  '/privacy': typeof PrivacyRoute
   '/saved': typeof SavedRoute
   '/signin': typeof SigninRoute
   '/neighbourhood-insights/$id': typeof NeighbourhoodInsightsIdRoute
@@ -146,6 +155,7 @@ export interface FileRouteTypes {
     | '/investment-estimator'
     | '/login'
     | '/owner-community'
+    | '/privacy'
     | '/saved'
     | '/signin'
     | '/neighbourhood-insights/$id'
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
     | '/investment-estimator'
     | '/login'
     | '/owner-community'
+    | '/privacy'
     | '/saved'
     | '/signin'
     | '/neighbourhood-insights/$id'
@@ -176,6 +187,7 @@ export interface FileRouteTypes {
     | '/investment-estimator'
     | '/login'
     | '/owner-community'
+    | '/privacy'
     | '/saved'
     | '/signin'
     | '/neighbourhood-insights/$id'
@@ -192,6 +204,7 @@ export interface RootRouteChildren {
   InvestmentEstimatorRoute: typeof InvestmentEstimatorRoute
   LoginRoute: typeof LoginRoute
   OwnerCommunityRoute: typeof OwnerCommunityRoute
+  PrivacyRoute: typeof PrivacyRoute
   SavedRoute: typeof SavedRoute
   SigninRoute: typeof SigninRoute
   NeighbourhoodInsightsIdRoute: typeof NeighbourhoodInsightsIdRoute
@@ -251,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OwnerCommunityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/saved': {
       id: '/saved'
       path: '/saved'
@@ -304,6 +324,7 @@ const rootRouteChildren: RootRouteChildren = {
   InvestmentEstimatorRoute: InvestmentEstimatorRoute,
   LoginRoute: LoginRoute,
   OwnerCommunityRoute: OwnerCommunityRoute,
+  PrivacyRoute: PrivacyRoute,
   SavedRoute: SavedRoute,
   SigninRoute: SigninRoute,
   NeighbourhoodInsightsIdRoute: NeighbourhoodInsightsIdRoute,

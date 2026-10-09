@@ -5,12 +5,12 @@ import { PageShell, Section } from "@/components/site/page";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Per Square Feet" },
+      { title: "Contact — THE CASSTLE CO" },
       {
         name: "description",
-        content: "Speak to a Per Square Feet advisor about buying, selling or investing in India.",
+        content: "Speak to a THE CASSTLE CO advisor about buying, selling or investing in India.",
       },
-      { property: "og:title", content: "Contact — Per Square Feet" },
+      { property: "og:title", content: "Contact — THE CASSTLE CO" },
       {
         property: "og:description",
         content: "Send an enquiry and an advisor will be in touch.",
@@ -46,7 +46,7 @@ function Contact() {
 
             <p className="eyebrow text-muted-foreground mb-4">PREFER A PRIVATE CONVERSATION?</p>
             <a
-              href="https://wa.me/919625225069"
+              href="https://wa.me/919310698305"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block border border-gold px-6 py-3 text-[0.68rem] uppercase tracking-[0.2em] text-primary transition-colors hover:bg-gold hover:text-white"

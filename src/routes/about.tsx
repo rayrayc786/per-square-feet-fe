@@ -4,16 +4,16 @@ import { PageHeader, PageShell, Section } from "@/components/site/page";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About PSF — Per Square Feet" },
+      { title: "About THE CASSTLE CO — THE CASSTLE CO" },
       {
         name: "description",
         content:
-          "Our story, approach, network and team — how Per Square Feet advises on premium Indian property.",
+          "Our story, approach, network and team — how THE CASSTLE CO advises on premium Indian property.",
       },
-      { property: "og:title", content: "About PSF — Per Square Feet" },
+      { property: "og:title", content: "About THE CASSTLE CO — THE CASSTLE CO" },
       {
         property: "og:description",
-        content: "How Per Square Feet researches, advises and works with buyers and investors.",
+        content: "How THE CASSTLE CO researches, advises and works with buyers and investors.",
       },
     ],
   }),
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/about")({
 const blocks = [
   {
     t: "Our Story",
-    d: "Per Square Feet began as a research note passed between friends buying their first homes. It grew into a practice built on the same idea: a house is only as good as the street it sits on.",
+    d: "THE CASSTLE CO began as a research note passed between friends buying their first homes. It grew into a practice built on the same idea: a house is only as good as the street it sits on.",
   },
   {
     t: "Our Approach",
@@ -38,17 +38,12 @@ const blocks = [
     d: "A first conversation, a shortlist, three viewings, one recommendation. We are paid for the advice, not the transaction volume.",
   },
   {
-    t: "Why PSF",
+    t: "Why THE CASSTLE CO",
     d: "Because most searches begin with a filter and end with a compromise. Ours begins with how you want your week to feel.",
   },
 ];
 
-const team = [
-  { n: "Ananya Desai", r: "Principal, Advisory" },
-  { n: "Rohan Iyer", r: "Head of Research" },
-  { n: "Meher Kapadia", r: "Investment Strategy" },
-  { n: "Vikram Nair", r: "Architecture & Diligence" },
-];
+
 
 function About() {
   return (
@@ -83,16 +78,7 @@ function About() {
         </div>
       </Section>
 
-      <Section eyebrow="Our Team" title="Small by design.">
-        <div className="grid gap-8 md:grid-cols-4">
-          {team.map((m) => (
-            <div key={m.n} className="border-t border-gold/50 pt-6">
-              <h3 className="font-display text-2xl text-primary">{m.n}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{m.r}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
+
     </PageShell>
   );
 }

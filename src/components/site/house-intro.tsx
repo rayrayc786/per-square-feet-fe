@@ -32,7 +32,7 @@ export function HouseIntro({ onDone }: { onDone: () => void }) {
       >
         <div className="text-center">
           <p className="font-display text-4xl tracking-[0.35em] text-primary-foreground md:text-6xl">
-            PER SQUARE FEET
+            THE CASSTLE CO
           </p>
           <span className="mx-auto mt-6 block h-px w-24 bg-gold" />
         </div>

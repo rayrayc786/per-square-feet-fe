@@ -57,7 +57,7 @@ export function ProductCard({ property, onMouseEnter, onMouseLeave }: ProductCar
       <div className="relative aspect-square sm:aspect-[4/3] rounded-xl overflow-hidden bg-muted">
         <div className="absolute top-3 left-3 z-10">
           <div className="bg-background/95 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium shadow-sm flex items-center gap-1">
-            Guest favourite
+            Verified
           </div>
         </div>
         

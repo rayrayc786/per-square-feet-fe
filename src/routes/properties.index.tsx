@@ -9,13 +9,13 @@ import { PropertiesMap } from "@/components/site/PropertiesMap";
 export const Route = createFileRoute("/properties/")({
   head: () => ({
     meta: [
-      { title: "The Collection — Curated Second Homes | Per Square Feet" },
+      { title: "The Collection — Curated Second Homes | THE CASSTLE CO" },
       {
         name: "description",
         content:
           "Browse a curated collection of verified villas, farmhouses and mountain residences across Uttarakhand, Himachal, Haryana and Rajasthan.",
       },
-      { property: "og:title", content: "The Collection — Curated Second Homes | Per Square Feet" },
+      { property: "og:title", content: "The Collection — Curated Second Homes | THE CASSTLE CO" },
       {
         property: "og:description",
         content: "Browse a curated collection of verified villas, farmhouses and mountain residences.",

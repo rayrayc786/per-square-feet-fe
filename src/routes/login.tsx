@@ -5,12 +5,12 @@ import { AuthPanel } from "@/components/site/auth-panel";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Log In — Per Square Feet" },
+      { title: "Log In — THE CASSTLE CO" },
       {
         name: "description",
-        content: "Log in to your Per Square Feet account to return to your saved shortlist.",
+        content: "Log in to your THE CASSTLE CO account to return to your saved shortlist.",
       },
-      { property: "og:title", content: "Log In — Per Square Feet" },
+      { property: "og:title", content: "Log In — THE CASSTLE CO" },
       {
         property: "og:description",
         content: "Return to your saved shortlist and estimates.",

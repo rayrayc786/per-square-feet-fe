@@ -2,48 +2,48 @@ import { Section } from "./page";
 
 const testimonials = [
   {
-    text: "It's been my pleasure working with Raveena & team. They're a team of consummate professionals who'll leave no stone unturned to reach their goal. I wish them the very best in their endeavours.",
-    author: "Prakash Krishna",
+    text: "We were juggling dozens of listings in unfamiliar locations and worried about clear titles and approvals. The Casstle Co. team curated a shortlist of trusted projects, connected us with vetted lawyers to verify each title, and guided us step-by-step. Their support helped us make an informed decision quickly and confidently.",
+    author: "Anish Kapoor, Bengaluru",
     num: "01",
   },
   {
-    text: "Had a wonderful experience interacting with Raveena and Disha..they are ready to go an extra mile to understand the requirement of prospective investors very patiently and suggest suitable options..very professional and supportive team.",
-    author: "Shruti N",
+    text: "As NRIs living abroad, coordinating a property purchase in India felt daunting. The Casstle Co. arranged site visits during our trip, connected us with local legal experts, and ensured every step was transparent and properly documented. Their guidance made owning our Goa villa stress-free and trustworthy. We no longer worried about language barriers or paperwork.",
+    author: "Deepak Menon, Dubai",
     num: "02",
   },
   {
-    text: "Raveena @Whitepuppies Realty is a true professional real estate consultant. She is proactive and understands the nuances of the complex deals. It was good to have them to advise us for our property transaction.",
-    author: "Ramesh Krishnamurthy",
+    text: "We wanted a mountain retreat but found conflicting information about connectivity and amenities. The Casstle Co. team’s detailed briefing helped us compare locations accurately. They pointed out a property with private road access and clear land titles – exactly what we needed for our family’s peace of mind. We finally felt confident to make a move.",
+    author: "Aman Sood, Gurugram",
     num: "03",
   },
   {
-    text: "Excellent choice of properties, which are clear, premium and hassle-free. We loved interacting with Dale and Raveena, who guided us through the entire process, showed us a range of properties, understood our requirements and shared all the documents for a thorough legal validation.",
-    author: "Bhushan Dhade",
+    text: "Our family wanted a calm weekend home with space for the kids and pets, but managing everyone’s needs seemed impossible. The advisors listened carefully to our lifestyle priorities and suggested family-friendly communities, even handling travel logistics. By focusing on what mattered most, they helped us find the perfect countryside farmhouse.",
+    author: "Alisha Mehta, Pune",
     num: "04",
   },
   {
-    text: "My husband and I recently looked at the Coorg project of White Puppies. We were so impressed with the professional yet personalised attention and the detailing of all aspects that we went ahead and invested. Both Raveena and Dale were quick to respond and answer our various queries.",
-    author: "Nandini Yadav",
+    text: "With demanding jobs and little spare time, researching second-home projects was nearly impossible. The Casstle Co. streamlined everything: they noted our preferences, filtered out unsuitable options, and organized site tours over one weekend. We saved weeks of effort and gained confidence that we chose wisely. The efficiency was truly invaluable to us.",
+    author: "Rahul Sen, Hyderabad",
     num: "05",
   },
   {
-    text: "Had a really smooth and professional experience working with White Puppies Realty on our project. A special thanks to Disha, who was incredibly helpful, responsive, and patient with all our questions throughout the process - she made everything so much easier to understand. Raveena was also fantastic, always ready to help and guide us whenever we needed it. Highly recommend the team to anyone looking for a reliable and dedicated realty experience!",
-    author: "Pradeep Singh",
+    text: "We weren’t interested in treating our second home as an investment rental. We wanted a personal sanctuary. The Casstle Co. team respected that and showcased villas known for privacy and wellness features. They didn’t push any returns projections or rental schemes; they simply helped us discover a home aligned with how our family lives. It made all the difference.",
+    author: "Simran Kaur, Delhi",
     num: "06",
   },
   {
-    text: "We had an exceptionally smooth and easy experience working with the team. Dale was very professional and courteous throughout the process. We felt very happy with our overall interactions and the journey.",
-    author: "Nikhil Hirve",
+    text: "As siblings co-investing in a farmhouse, the legal structure confused us. The Casstle Co. explained co-ownership models clearly and introduced us to legal counsel to draft our agreement. Now we each own part of a beautiful retreat with no lingering questions about the paperwork, finally!!",
+    author: "Ayesha Khan, Lucknow",
     num: "07",
   },
   {
-    text: "Had a very professional and wonderful experience dealing with them. Highly recommended. Especially immense support from Disha, she was absolutely spot on for customer experience.",
-    author: "Curiousmindsbydharm",
+    text: "We needed a property with long-term value but were afraid of overpriced beachfront projects. Instead of pitching an expensive option, the team provided comparative data on coastal markets and advised us on mid-range projects with strong demand. Their honest guidance and local insights gave us confidence and that investment has almost doubled by now, thanks to Guneet from the team",
+    author: "Kunal Bhatt, Kochi",
     num: "08",
   },
   {
-    text: "I had an excellent experience working with White Puppies Realty, both digitally and face-to-face. Their professionalism, personal touch, and forward-thinking approach really stood out to me. I truly believe wellness and mental health will become an increasingly important part of our lives in the coming years, and White Puppies Realty is ahead of the game in recognizing that. Wishing the entire team continued success and all the very best!",
-    author: "Raj Monnappa",
+    text: "After buying our weekend home through another company, we realized we needed ongoing support for upkeep. The Casstle Co. team recommended a reliable property manager and shared tips on local maintenance providers. Even after closing, their guidance made our ownership experience seamless and worry-free.",
+    author: "Suresh Rao, Mumbai",
     num: "09",
   }
 ];

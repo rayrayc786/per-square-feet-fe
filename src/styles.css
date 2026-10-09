@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -32,7 +33,7 @@
   --color-hairline: var(--hairline);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Libre Baskerville", "Cormorant Garamond", Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -613,4 +614,17 @@ html.entrance-seen .entrance {
 }
 .property-popup .leaflet-popup-content a:hover {
   text-decoration: none;
+}
+
+/* ---- Word Slider ---- */
+@keyframes word-slide {
+  0% { opacity: 0; transform: translateY(15px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-15px); }
+}
+
+.word-slider {
+  display: inline-block;
+  animation: word-slide 3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
